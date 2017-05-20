@@ -211,12 +211,12 @@ class Canvas(QWidget):
             if self.drawing():
                 self.handleDrawing(pos)
 
-    def endMove(self, copy=False):
+    def endMove(self, duplicate=False):
         assert self.selectedShape and self.selectedShapeCopy
         shape = self.selectedShapeCopy
         #del shape.fill_color
         #del shape.line_color
-        if copy:
+        if duplicate:
             self.shapes.append(shape)
             self.selectedShape.selected = False
             self.selectedShape = shape
@@ -363,7 +363,7 @@ class Canvas(QWidget):
             self.update()
             return shape
 
-    def copySelectedShape(self):
+    def duplicateSelectedShape(self):
         if self.selectedShape:
             shape = self.selectedShape.copy()
             self.deSelectShape()
